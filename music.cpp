@@ -110,15 +110,7 @@ void play(const std::string& sheet) {
 }
 
 int main() {
-    // 示例：C大调音阶（速度120）
-    //std::string sheet = "t=120; 1 1 5 5 6 6 5- 4 4 3 3 2 2 1-";
-    //play(sheet);
 
-    // 示例：《小星星》片段
-    // std::string littleStar = "t=100; 1 1 5 5 6 6 5- 4 4 3 3 2 2 1-";
-    // play(littleStar);
-
-    //速度即为BPM，可用专业软件测定
     std::cout<<"Welcome"<<std::endl;
     while(true){
         std::string inp;
@@ -131,21 +123,10 @@ int main() {
     }
     return 0;
 }
+// 示例：C大调音阶（速度120）
+//std::string sheet = "t=120; 1 1 5 5 6 6 5- 4 4 3 3 2 2 1-";
+//play(sheet);
 
-/*
-简谱表示约定：
-
-音符：1(do), 2(re), 3(mi), 4(fa), 5(sol), 6(la), 7(si), 0(休止符)
-
-音高调整：前缀+升高八度，-降低八度（可叠加，如++5）
-
-时值调整：
-
-_：减时线（每增加一个，时值减半）
-
--：增时线（每增加一个，时值加倍）
-
-.：附点（时值增加50%，最多两个）
-
-速度设置：t=120;（120拍/分钟，默认60）
-*/
+// 示例：《小星星》片段
+// std::string littleStar = "t=100; 1 1 5 5 6 6 5- 4 4 3 3 2 2 1-";
+// play(littleStar);
