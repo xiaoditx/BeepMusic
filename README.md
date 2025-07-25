@@ -20,7 +20,7 @@
 
 - `.`：附点（时值增加50%，最多两个）
 
-**速度设置**：`t=x;`（x拍/分钟，默认60）
+**速度设置**：`t=x;`（x拍/分钟，默认60），此值为BPM值，简谱一般会提供，不提供的也有参考信息进行查询，一些专业软件也提供检测功能
 
 ## 示例
 
@@ -35,3 +35,45 @@ t=72; -6_ 3_ 3. 3_ -7. -6__ 1-. -6_ 3_ 3. 3_ 7. +1__ 3-. 6_ +3_ +3. +3_ 7. +1__ 
 ```
 
 对于外放，蜂鸣器可能会吞掉一些声音，`t=45;`可能更合适
+
+## 软件操作
+
+初始输出如下：
+
+```
+welcome
+```
+
+将简谱按照规则记录，复制到控制台，回车后会得到输出，如下
+
+```
+t=100; 1 1 5 5 6 6 5- 4 4 3 3 2 2 1-
+Play: 1 => Freq: 261Hz, Duration: 600ms
+Play: 1 => Freq: 261Hz, Duration: 600ms
+Play: 5 => Freq: 392Hz, Duration: 600ms
+Play: 5 => Freq: 392Hz, Duration: 600ms
+Play: 6 => Freq: 440Hz, Duration: 600ms
+Play: 6 => Freq: 440Hz, Duration: 600ms
+Play: 5- => Freq: 392Hz, Duration: 1200ms
+Play: 4 => Freq: 349Hz, Duration: 600ms
+Play: 4 => Freq: 349Hz, Duration: 600ms
+Play: 3 => Freq: 329Hz, Duration: 600ms
+Play: 3 => Freq: 329Hz, Duration: 600ms
+Play: 2 => Freq: 293Hz, Duration: 600ms
+Play: 2 => Freq: 293Hz, Duration: 600ms
+Play: 1- => Freq: 261Hz, Duration: 1200ms
+```
+
+`play`表示发出声响的音符，后面跟着音符的原文是便于查找，`Freq`标记声音频率，`Duration`标记持续时间
+
+特殊的，如下
+
+```
+0
+Rest: 0 => Duration: 1000ms
+```
+对于休止符，输出`Rest`，`Freq`参数会被省略
+
+-----
+
+软件运行时，使用`exit`可以退出软件，注意软件对于指令是大小写敏感的
