@@ -123,6 +123,9 @@ int main() {
     }
     return 0;
 }
+
+
+
 // 示例：C大调音阶（速度120）
 //std::string sheet = "t=120; 1 1 5 5 6 6 5- 4 4 3 3 2 2 1-";
 //play(sheet);
