@@ -43,27 +43,58 @@ t=72; -6_ 3_ 3. 3_ -7. -6__ 1-. -6_ 3_ 3. 3_ 7. +1__ 3-. 6_ +3_ +3. +3_ 7. +1__ 
 初始输出如下：
 
 ```
-welcome
-```
+===============================================
+        C++ 简谱转Beep播放器 (增强版)
+===============================================
 
-将简谱按照规则记录，复制到控制台，回车后会得到输出，如下
+ 当前曲谱: t=120; 1 2 3 4 5 6 7 #1 +1
 
+ 音符解析结果:
+ =============================================
+  记谱    频率(Hz)   时长(ms)   类型
+  ------------------------------------------
+  1         261       500       音符
+  2         293       500       音符
+  3         329       500       音符
+  4         349       500       音符
+  5         392       500       音符
+  6         440       500       音符
+  7         493       500       音符
+  #1        277       500       音符 (升半音)
+  +1        523       500       音符
+ =============================================
+
+ 控制选项:
+  [P] 播放音乐        [S] 停止播放
+  [R] 重新输入曲谱    [Q] 退出程序
+  [1] 示例: 小星星   [2] 示例: 欢乐颂
+  [3] 示例: 生日快乐 [4] 示例: 音阶
+
+ 请选择:
 ```
-t=100; 1 1 5 5 6 6 5- 4 4 3 3 2 2 1-
-Play: 1 => Freq: 261Hz, Duration: 600ms
-Play: 1 => Freq: 261Hz, Duration: 600ms
-Play: 5 => Freq: 392Hz, Duration: 600ms
-Play: 5 => Freq: 392Hz, Duration: 600ms
-Play: 6 => Freq: 440Hz, Duration: 600ms
-Play: 6 => Freq: 440Hz, Duration: 600ms
-Play: 5- => Freq: 392Hz, Duration: 1200ms
-Play: 4 => Freq: 349Hz, Duration: 600ms
-Play: 4 => Freq: 349Hz, Duration: 600ms
-Play: 3 => Freq: 329Hz, Duration: 600ms
-Play: 3 => Freq: 329Hz, Duration: 600ms
-Play: 2 => Freq: 293Hz, Duration: 600ms
-Play: 2 => Freq: 293Hz, Duration: 600ms
-Play: 1- => Freq: 261Hz, Duration: 1200ms
+其中
+
+- 按下数字键，可以选择示例，快速实现乐谱切换
+- 按下`P`，播放当前乐谱
+- ~~按下`S`，停止当前播放~~（当前版本不可以）
+- 输入`R`，自定义曲谱
+- 输入`Q`，退出软件
+
+默认设置下，按下`P`会看到这样的输出：
+
+```cpp
+ 请选择:
+  播放中... (按任意键停止)
+  Play: 1        => Freq: 261   Hz, Duration: 500ms
+  Play: 2        => Freq: 293   Hz, Duration: 500ms
+  Play: 3        => Freq: 329   Hz, Duration: 500ms
+  Play: 4        => Freq: 349   Hz, Duration: 500ms
+  Play: 5        => Freq: 392   Hz, Duration: 500ms
+  Play: 6        => Freq: 440   Hz, Duration: 500ms
+  Play: 7        => Freq: 493   Hz, Duration: 500ms
+  Play: #1       => Freq: 277   Hz, Duration: 500ms
+  Play: +1       => Freq: 523   Hz, Duration: 500ms
+按任意键以继续...
 ```
 
 `play`表示发出声响的音符，后面跟着音符的原文是便于查找，`Freq`标记声音频率，`Duration`标记持续时间
