@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// 音符结构体 (添加 hasTie 成员)
+// 音符结构体
 struct Note {
     double freq;       // 频率(Hz)
     int duration_ms;   // 时长(毫秒)
@@ -227,16 +227,18 @@ void displayUI(const string& sheet, const vector<Note>& notes) {
 }
 
 int main() {
-    string sheet = "t=120; 1 2 3 4 5 6 7 #1 +1";
-    vector<Note> notes;
-
+    //初始化与变量准备
+    string sheet = "t=120; 1 2 3 4 5 6 7 #1 +1";//初始乐谱
+    vector<Note> notes;//乐谱经过转换会流向这个变量（容器？）
+    //程序主循环
     while (true) {
+        //先分析当前的乐谱
         notes = parseSheetMusic(sheet);
-        displayUI(sheet, notes);
-
+        displayUI(sheet, notes);//展示分析结果
+        //接受用户按键
         char choice = _getch();
         choice = toupper(choice);
-
+        //分析按键
         switch (choice) {
             case 'P': // 播放
                 cout << "\n  播放中... (按任意键停止)\n";
@@ -273,6 +275,9 @@ int main() {
             case 'Q': // 退出
                 return 0;
 
+            case 'H': // 帮助信息
+                //还没写OvO
+                
             default:
                 cout << "\n  无效选项，请重新选择\n";
                 Sleep(1000);
