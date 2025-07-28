@@ -1,5 +1,7 @@
 # BeepMusic
 
+<h3 style="color:red">注意，当前的代码版本已更新，但release与readme还没有来得及更新</h3>
+
 ## 功能介绍
 
 将简谱转换为频率和时长，从而供Beep函数使用，让蜂鸣器达到奏乐效果
