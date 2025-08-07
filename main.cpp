@@ -1,4 +1,16 @@
-#include "inc_and_func.h"
+#include "mainhead.h"
+#include<windows.h>
+
+/*
+更新备忘录
+==============================
+需要的修改：删除AI做的几个功能包括实力曲谱，改为帮助
+------------------------------
+需要的增添：
+- 提供自定义命令（这样我就能接入易语言了嘿嘿嘿）
+- 提供“从文件读取”
+- 提供设置选项（啊我研究了那么长时间的读写配置项总算有用武之地了）
+*/
 
 // 音符结构体
 struct Note {
@@ -100,30 +112,39 @@ Note parseNote(const std::string& noteStr, int tempo) {
 
 // 解析并播放简谱
 std::vector<Note> parseSheetMusic(const std::string& sheet) {
-    // 默认速度
+    // 默认速度60
     int tempo = 60;
 
     // 查找并设置速度
     size_t tempoPos = sheet.find("t=");
+    // 记录曲谱（不是为什么要单独搞个变量，初版让DeepSeek写的我也没参与[算了还是往下看吧...]）
     std::string notesPart = sheet;
+
     if (tempoPos != std::string::npos) {
-        size_t endPos = sheet.find(';', tempoPos);
+        size_t endPos = sheet.find(';', tempoPos);//记录分号位置(速度结尾位置)
         if (endPos != std::string::npos) {
-            tempo = stoi(sheet.substr(tempoPos + 2, endPos - tempoPos - 2));
-            notesPart = sheet.substr(endPos + 1);
+            tempo = stoi(//获取用户自定义速度并记录进tempo
+                sheet.substr(
+                    tempoPos + 2,// 头+2，略过“t=”
+                    endPos - tempoPos - 2// 尾-头+2，需要选取的长度
+                )
+            );
+            notesPart = sheet.substr(endPos + 1);// 截取掉开头速度标记的曲谱
         }
     }
 
-    // 分割音符
+    // 下面开始分割音符喵
+
+    // 定义iss，内容为notesPart，可以直接一个个读取（其实我一开始想的是sscanf但是既然大模型都那么说了，嘿嘿）
     std::istringstream iss(notesPart);
-    std::vector<Note> notes;
-    std::string token;
+    std::vector<Note> notes;// 曲谱解析结果盛放在这里
+    std::string token;// 单个音符存放变量（string还是有点太大了，要我说char[10]就行）
 
     while (iss >> token) {
-        // 跳过空标记
+        // 跳过空标记(诶这样还能读到空？算了可能是防御性编程，留着吧)
         if (token.empty()) continue;
-
-        Note note = parseNote(token, tempo);
+        Note note = parseNote(token, tempo);// 根据音符和速度计算后存入note变量
+        // 话说这里可以优化一下啊，tempo作为全局变量就可以不用传了来着
         notes.push_back(note);
     }
 
@@ -218,13 +239,14 @@ void displayUI(const std::string& sheet, const std::vector<Note>& notes) {
 
 int main() {
     // 设置控制台输出为UTF-8
-    SetConsoleOutputCP(65001);
+    // SetConsoleOutputCP(65001);//疑似不大直观
+    SetConsoleOutputCP(CP_UTF8);
     //初始化与变量准备
     std::string sheet = "t=120; 1 2 3 4 5 6 7 #1 +1";//初始乐谱
-    std::vector<Note> notes;//乐谱经过转换会流向这个变量（容器？）
+    std::vector<Note> notes;//初始化notes变量，盛放转化后的乐谱
     //程序主循环
     while (true) {
-        //先分析当前的乐谱
+        //分析当前的乐谱
         notes = parseSheetMusic(sheet);
         displayUI(sheet, notes);//展示分析结果
         //接受用户按键
