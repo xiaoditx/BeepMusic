@@ -1,3 +1,5 @@
+#ifndef A_H
+#define A_H
 #include<iostream>
 #include<vector>
 #include<string>
@@ -7,3 +9,6 @@
 #include<windows.h>
 #include<conio.h>
 #include<iomanip>
+
+extern void print_hello();
+#endif

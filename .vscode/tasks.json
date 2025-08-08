@@ -8,8 +8,13 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "src_c/test.cpp",
+                "-I",
+                "src_c",
+                "-I",
+                "head",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",                
             ],
             "options": {
                 "cwd": "${fileDirname}"

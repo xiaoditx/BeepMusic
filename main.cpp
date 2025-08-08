@@ -1,5 +1,4 @@
-#include "mainhead.h"
-#include<windows.h>
+#include "head/mainhead.h"
 
 /*
 更新备忘录
@@ -245,6 +244,7 @@ int main() {
     // 设置控制台输出为UTF-8
     // SetConsoleOutputCP(65001);//疑似不大直观
     SetConsoleOutputCP(CP_UTF8);
+    print_hello();
     //初始化与变量准备
     std::string sheet = "t=120; 1 2 3 4 5 6 7 #1 +1";//初始乐谱
     std::vector<Note> notes;//初始化notes变量，盛放转化后的乐谱
