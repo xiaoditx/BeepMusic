@@ -8,7 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
-                "src_c/test.cpp",
+                "src_c/*.cpp",
                 "-I",
                 "src_c",
                 "-I",
