@@ -4,7 +4,7 @@
 /*
 更新备忘录
 ==============================
-需要的修改：删除AI做的几个功能包括实力曲谱，改为帮助
+需要的修改：修改帮助本文
 ------------------------------
 需要的增添：
 - 提供自定义命令（这样我就能接入易语言了嘿嘿嘿）
@@ -37,6 +37,8 @@ Note parseNote(const std::string& noteStr, int tempo) {
     if (noteStr.empty()) {
         return {0, 0, true, "", false};
     }
+
+    // 下面是音乐的事情了，这我就不清楚了，所以不会怎么加注释了
 
     // 解析音高调整
     int octaveShift = 0;
@@ -149,25 +151,27 @@ std::vector<Note> parseSheetMusic(const std::string& sheet) {
     }
 
     // 处理延音线
-    std::vector<Note> mergedNotes;
+    std::vector<Note> mergedNotes;// 延音线处理后的乐谱
     for (size_t i = 0; i < notes.size(); i++) {
-        if (notes[i].hasTie && i + 1 < notes.size() && 
-            !notes[i+1].is_rest && !notes[i].is_rest &&
-            abs(notes[i].freq - notes[i+1].freq) < 1.0) {
+        // notes[i]当前音符，notes[i+1]下一个音符
+        // 我真得防御性编程了（指使用i+1[notes]）
+        if (notes[i].hasTie && i + 1 < notes.size() && // 判断下一个位置有没有音符
+            !notes[i+1].is_rest && !notes[i].is_rest && // 判断是不是前后都不是休止符
+            abs(notes[i].freq - notes[i+1].freq) < 1.0) {// 你敢信我就鼠标在abs上悬浮一下就查了半天constexpr是什么
+            
             // 合并延音线连接的两个音符
             Note merged = notes[i];
-            merged.duration_ms += notes[i+1].duration_ms;
+            merged.duration_ms += notes[i+1].duration_ms;// 合并时长
             merged.notation = notes[i].notation + "~" + notes[i+1].notation;
-            merged.hasTie = notes[i+1].hasTie; // 检查下一个音符是否还有延音线
-
+            merged.hasTie = notes[i+1].hasTie; // 如果下面的音符还有延音线就保留
             mergedNotes.push_back(merged);
             i++; // 跳过下一个音符
         } else {
-            mergedNotes.push_back(notes[i]);
+            mergedNotes.push_back(notes[i]);// 直接放入
         }
     }
 
-    return mergedNotes;
+    return mergedNotes;// 返回结果
 }
 
 // 播放音符列表
@@ -186,13 +190,13 @@ void playNotes(const std::vector<Note>& notes) {
     }
 }
 
-// 显示控制台界面
+// 控制台界面显示
 void displayUI(const std::string& sheet, const std::vector<Note>& notes) {
     system("cls");
 
     // 显示标题
     std::cout << "===============================================\n";
-    std::cout << "        C++ 简谱转Beep播放器 (增强版)\n";
+    std::cout << "        C++ 简谱转Beep播放器 (V2.0.1.0)\n";
     std::cout << "===============================================\n\n";
 
     // 显示当前曲谱
@@ -203,6 +207,8 @@ void displayUI(const std::string& sheet, const std::vector<Note>& notes) {
     std::cout << " =============================================\n";
     std::cout << "  记谱    频率(Hz)   时长(ms)   类型\n";
     std::cout << "  ------------------------------------------\n";
+
+    // 下面就是DeepSeek写的了，看不懂别找我，我对什么setw不(懒)感(得)兴(研)趣(究)
 
     for (const auto& note : notes) {
         std::cout << "  " << std::setw(8) << std::left << note.notation << "  ";
@@ -230,10 +236,8 @@ void displayUI(const std::string& sheet, const std::vector<Note>& notes) {
 
     // 显示控制选项
     std::cout << " 控制选项:\n";
-    std::cout << "  [P] 播放音乐        [S] 停止播放\n";
-    std::cout << "  [R] 重新输入曲谱    [Q] 退出程序\n";
-    std::cout << "  [1] 示例: 小星星   [2] 示例: 欢乐颂\n";
-    std::cout << "  [3] 示例: 生日快乐 [4] 示例: 音阶\n\n";
+    std::cout << "  [P] 播放音乐        [H] 帮助文本";
+    std::cout << "  [I] 自定义曲谱      [Q] 退出程序\n";
     std::cout << " 请选择: ";
 }
 
@@ -261,41 +265,20 @@ int main() {
                 _getch();//等待用户输入
                 break;
 
-            case 'S': // 停止
-                // Beep停止在Windows中没有直接API，这里只是跳过
-                std::cout << "\n  停止播放\n";
-                Sleep(1000);
-                break;
-
-            case 'R': // 重新输入
-                std::cout << "\n  输入新曲谱 (如: t=100; 1 2 3 4 5 6 7): ";
+            case 'I': // 自定义乐谱
+                std::cout << "\n  输入新曲谱: ";
                 std::getline(std::cin, sheet);
-                break;
-
-            case '1': // 小星星
-                sheet = "t=120; 1 1 5 5 6 6 5~ 4 4 3 3 2 2 1~";
-                break;
-
-            case '2': // 欢乐颂
-                sheet = "t=100; 3 3 4 5~ 5 4 3 2~ 1 1 2 3~ 3. 2 2~";
-                break;
-
-            case '3': // 生日快乐
-                sheet = "t=120; 5 5 6 5~ #1 7~ 5 5 6 5~ 2 #1~ 5 5 #5 #4~ #1 7 6~";
-                break;
-
-            case '4': // 音阶
-                sheet = "t=180; 1 2 3 4 5 6 7 #1 +1 7 6 5 4 3 2 1";
                 break;
 
             case 'Q': // 退出
                 return 0;
 
             case 'H': // 帮助信息
-                //还没写OvO
+
+                std::cout<<"别看劳资喵,劳资也不会喵,代码全是人机DeepSeek写的我会(懒)个(得)毛(写)啊";
 
             default:
-                std::cout << "\n  无效选项，请重新选择\n";
+                std::cout << "\n  无效选项，重新选择\n";
                 Sleep(1000);
                 break;
         }
