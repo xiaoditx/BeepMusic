@@ -1,6 +1,6 @@
 # BeepMusic
 
-<h3 style="color:red">注意，当前的代码版本已更新，但release与readme还没有来得及更新</h3>
+<h3 style="color:red">注意，当前的代码版本已更新，但release与readme还没有来得及更新，可自行下载代码进行编译（提供编译批处理）</h3>
 
 ## 功能介绍
 

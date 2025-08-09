@@ -1,6 +1,5 @@
 #include"../head/mainhead.h"
 
-
 // 解析单个音符
 Note parseNote(const std::string& noteStr, int tempo) {
     if (noteStr.empty()) {
