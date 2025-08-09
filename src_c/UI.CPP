@@ -1,13 +1,16 @@
 #include"../head/mainhead.h"
+#include"../head/function.h"
+
 // 控制台界面显示
 void displayUI(const std::string& sheet, const std::vector<Note>& notes) {
+
     system("cls");
 
     // 显示标题
     std::cout << "===============================================\n";
-    std::cout << "        C++ 简谱转Beep播放器 (V2.0.1.0)\n";
+    std::cout << "        \033[31mC++ 简谱转Beep播放器 (V2.0.1.0)\033[0m\n";
     std::cout << "===============================================\n\n";
-
+    
     // 显示当前曲谱
     std::cout << " 当前曲谱: " << sheet << "\n\n";
 
