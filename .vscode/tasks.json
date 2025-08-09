@@ -7,14 +7,15 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "main.cpp",
                 "src_c/*.cpp",
                 "-I",
                 "src_c",
                 "-I",
                 "head",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",                
+                "BeepMusic_alpha.exe",
+                //"${fileDirname}\\${fileBasenameNoExtension}.exe",                
             ],
             "options": {
                 "cwd": "${fileDirname}"

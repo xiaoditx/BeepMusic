@@ -145,6 +145,17 @@ std::vector<Note> parseSheetMusic(const std::string& sheet) {
 // 播放音符列表
 void playNotes(const std::vector<Note>& notes) {
     for (const auto& note : notes) {
+        MSG message_get;
+        if(PeekMessage(&message_get,NULL,0,0,PM_REMOVE)){
+            if(message_get.message==WM_HOTKEY){
+                // 这个版本一定是Ctrl+Alt+Shift+S，后续还会有音符调整等等（不过我在考虑全部收进这一个快捷键）
+                std::cout<<"当前播放已终止";
+                break;
+            }
+            TranslateMessage(&message_get);
+            DispatchMessage(&message_get);
+        }
+        std::cout<<"test";
         if (note.is_rest) {
             std::cout << "  Rest: " << std::setw(8) << std::left << note.notation 
                  << " => Duration: " << note.duration_ms << "ms\n";

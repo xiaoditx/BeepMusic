@@ -1,13 +1,16 @@
 #include "head/mainhead.h"
+#include "head/function.h"
 
 // 本文件盛放main函数
-
 int main() {
     // 设置控制台输出为UTF-8
     // SetConsoleOutputCP(65001);//疑似不大直观
     SetConsoleOutputCP(CP_UTF8);
     //print_hello();// 测试用的来着，不删了吧，注释掉留个纪念
     //初始化与变量准备
+    if(!hotkey()){
+        Sleep(5000);
+    }
     std::string sheet = "t=120; 1 2 3 4 5 6 7 #1 +1";//初始乐谱
     std::vector<Note> notes;//初始化notes变量，盛放转化后的乐谱
     //程序主循环
@@ -37,7 +40,7 @@ int main() {
 
             case 'H': // 帮助信息
 
-                std::cout<<"别看劳资喵,劳资也不会喵,代码全是人机DeepSeek写的我会(懒)个(得)毛(写)啊";
+                std::cout<<"\nCtrl+Alt+Shift+S可以暂停音乐哦\n";
 
             default:
                 std::cout << "\n  无效选项，重新选择\n";
