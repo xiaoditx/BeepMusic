@@ -13,7 +13,15 @@ root/
 ├── HELPS/
 │   ├── Color_Print.md      彩色输出帮助
 │   ├── Hot_Key.md          热键帮助
-│   └── Introduce.md        项目介绍
+│   ├── Introduce.md        项目介绍
+│   └── RC_help.md          resources.rc文件的一些帮助内容
+├── Icons/
+│   ├── favicon.ico         同上级目录的icon.ico，仅名称不同
+│   ├── ori.jpg             软件图标原图
+│   └── result.png          软件图标透明图
+├── release/                编译结果（使用build.bat的）
+│   ├── BeepMusic_release_win_x64.exe
+│   └── BeepMusic_release_win_x86.exe
 ├── src_c/
 │   ├── function.cpp        封装功能函数的定义，简化开发（如彩色输出）
 │   ├── play_core.cpp       存放核心解析、演奏函数
@@ -27,10 +35,13 @@ root/
 │       └── krnln.fnr       支持库文件
 ├── 备忘.txt                 更新备忘录，记录需要的功能等
 ├── BeepMusic_alpha.exe     开发调试版本的编译结果
+├── build.bat               编译最终版本用的批处理，该批处理会同时编译resources.rc
+├── icon.ico                软件图标
 ├── LICENSE                 开源协议
 ├── main.cpp                主函数放置的文件，编译在此处进行
-├── MakeExe.bat             编译用的批处理，不使用VScode的开发者可以借此编译
-└── main.cpp
+├── MakeExe.bat             生成调试版用的批处理，不使用VScode的开发者可以借此编译
+├── README.md               本项目的readme
+└── resources.rc            资源文件，放置图标信息、软件信息
 ```
 
 # ini结构说明

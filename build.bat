@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: 配置信息
+:: 一些变量（可以快速移植到别的项目）
 set PROGRAM_NAME=BeepMusic
 set OUTPUT_X64=%PROGRAM_NAME%_release_win_x64.exe
 set OUTPUT_X86=%PROGRAM_NAME%_release_win_x86.exe
@@ -14,7 +14,6 @@ if not exist "main.cpp" (
     echo 错误: 找不到 main.cpp
     goto :cleanUP
 )
-
 if not exist "resources.rc" (
     echo 错误: 找不到 resources.rc
     goto :cleanUP
@@ -28,11 +27,17 @@ if %errorlevel% neq 0 (
 )
 
 :: 编译 64 位版本
+
+:: ===================================
+
 echo 正在编译 64 位版本...
+
 echo 正在编译资源文件
 windres resources.rc -F pe-x86-64 -o resources_x64.o
+:: 存储当前错误码（否则会被echo刷成0）
 set RES64_ERR=%errorlevel%
 echo 编译返回：%RES64_ERR%
+
 if %RES64_ERR% neq 0 (
     echo 错误: 资源文件64位编译失败
     goto :cleanUP
@@ -41,8 +46,10 @@ echo 资源文件编译成功
 
 echo 正在编译软件主体
 g++ -m64 -fdiagnostics-color=always src_c/*.cpp main.cpp resources_x64.o -I src_c -I head -o release/%OUTPUT_X64% -mconsole
+:: 依旧存储
 set COMP64_ERR=%errorlevel%
 echo 编译返回：%COMP64_ERR%
+
 if %COMP64_ERR% neq 0 (
     echo 错误: x64程序编译失败
     goto :cleanUP
@@ -50,6 +57,9 @@ if %COMP64_ERR% neq 0 (
 echo 编译完成，已生成 release/%OUTPUT_X64%
 
 :: 编译 32 位版本
+
+:: ===================================
+
 echo 正在编译 32 位版本...
 echo 正在编译资源文件
 windres resources.rc -F pe-i386 -o resources_x86.o
@@ -61,24 +71,13 @@ if %RES32_ERR% neq 0 (
 )
 echo 资源文件编译成功
 
-::------------
-
-::set EXTRA_LDFLAGS32=-Wl,--large-address-aware -static -static-libgcc -static-libstdc++
-
-::i686-w64-mingw32-g++ -m32 %EXTRA_LDFLAGS32% ^
-::    main.cpp resources_x86.o src_c/*.cpp ^
-::    -I src_c -I head ^
-::    -o release/%OUTPUT_X86% -mconsole 2> build32.log
-
-::--------------
-
 echo 正在编译软件主体
 i686-w64-mingw32-g++ -m32 -fdiagnostics-color=always main.cpp resources_x86.o src_c/*.cpp -I src_c -I head -o release/%OUTPUT_X86% -mconsole
 set COMP32_ERR=%errorlevel%
 echo 编译返回：%COMP32_ERR%
 if %COMP32_ERR% neq 0 (
     echo 错误: x86程序编译失败
-    goto :cleanUP  :: 统一使用 goto :cleanUP
+    goto :cleanUP
 )
 echo 编译完成，已生成 release/%OUTPUT_X86%
 

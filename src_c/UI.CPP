@@ -51,7 +51,7 @@ void displayUI(const std::string& sheet, const std::vector<Note>& notes) {
 
     // 显示控制选项
     std::cout << " 控制选项:\n";
-    std::cout << "  [P] 播放音乐        [H] 帮助文本";
+    std::cout << "  [P] 播放音乐        [H] 帮助文本\n";
     std::cout << "  [I] 自定义曲谱      [Q] 退出程序\n";
     std::cout << " 请选择: ";
 }

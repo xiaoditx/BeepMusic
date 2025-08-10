@@ -119,7 +119,7 @@ std::vector<Note> parseSheetMusic(const std::string& sheet) {
     }
 
     // 处理延音线
-    std::vector<Note> mergedNotes;// 延音线处理后的乐谱
+    std::vector<Note> mergedNotes;// 存放延音线处理后的乐谱
     for (size_t i = 0; i < notes.size(); i++) {
         // notes[i]当前音符，notes[i+1]下一个音符
         // 我真得防御性编程了（指使用i+1[notes]）
