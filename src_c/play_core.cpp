@@ -147,13 +147,9 @@ void playNotes(const std::vector<Note>& notes) {
     for (const auto& note : notes) {
         MSG message_get;
         if(PeekMessage(&message_get,NULL,0,0,PM_REMOVE)){
-            if(message_get.message==WM_HOTKEY){
-                // 这个版本一定是Ctrl+Alt+Shift+S，后续还会有音符调整等等（不过我在考虑全部收进这一个快捷键）
-                std::cout<<"当前播放已终止";
-                break;
-            }
-            TranslateMessage(&message_get);
-            DispatchMessage(&message_get);
+            // 这个版本一定是Ctrl+Alt+Shift+S，后续还会有音符调整等等（不过我在考虑全部收进这一个快捷键）
+            std::cout<<"当前播放已终止\n";
+            break;
         }
         std::cout<<"test";
         if (note.is_rest) {
@@ -167,4 +163,9 @@ void playNotes(const std::vector<Note>& notes) {
             Beep(static_cast<DWORD>(note.freq), static_cast<DWORD>(note.duration_ms));
         }
     }
+}
+
+std::string interrupt(){
+    // 空
+    return "no";
 }

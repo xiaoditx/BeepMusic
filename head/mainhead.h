@@ -7,6 +7,7 @@
 #include<cmath>
 #include<map>
 #include<windows.h>
+#include<algorithm>
 #include<conio.h>
 #include<iomanip>
 

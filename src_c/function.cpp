@@ -52,11 +52,11 @@ bool hotkey() {
             
             LocalFree(er_message); // 释放系统分配的内存
         } else {
-            message = "Unknown error (Failed to get description)";
+            message = "未知错误: 无法获取系统错误描述";
         }
 
         // 使用ANSI转义序列输出彩色错误信息
-        printf("\n\033[1;4;5;31m注册热键时错误，可能会引起暂停失效\n错误代码 %lu\n%s\033[0m", 
+        printf("\n\033[1;4;5;31m注册热键时错误,可能会引起暂停失效\n错误代码: %lu\n错误信息: %s\033[0m", 
                er_code, message.c_str());
         
         return false;

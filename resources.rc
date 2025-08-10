@@ -1,0 +1,34 @@
+#include <winver.h>
+
+// 图标资源
+IDI_ICON1 ICON "icon.ico"
+
+// 版本信息
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     2,1,1,3  // 文件版本 
+PRODUCTVERSION  2,1,1,3  // 产品版本 
+FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
+FILEFLAGS       0x0      // 0=正式版, VS_FF_DEBUG=调试版
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP  //应用程序类型 
+FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"  // 简体中文(0x0804) + Unicode(1200)
+        BEGIN
+            VALUE "CompanyName",        "小狄同学呀"
+            VALUE "FileDescription",    "解析简谱供蜂鸣器进行音乐演奏"
+            VALUE "FileVersion",        "2.1.1.3"
+            VALUE "InternalName",       "BM_p001.exe"
+            VALUE "LegalCopyright",     " WTFPL 开源"
+            VALUE "OriginalFilename",   "BeepMusic.exe"
+            VALUE "ProductName",        "BeepMusic"
+            VALUE "ProductVersion",     "2.1.1.3"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0804, 1200  // 简体中文(0x0804)
+    END
+END

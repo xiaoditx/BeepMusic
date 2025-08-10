@@ -30,18 +30,24 @@ int main() {
                 _getch();//等待用户输入
                 break;
 
-            case 'I': // 自定义乐谱
+            case 'I':{ // 自定义乐谱
                 std::cout << "\n  输入新曲谱: ";
-                std::getline(std::cin, sheet);
+                std::string user_in;
+                std::getline(std::cin,user_in);
+                std::transform(user_in.begin(),user_in.end(),user_in.begin(),toupper);
+                if(user_in!="RETURN"){
+                    sheet=user_in;
+                }
                 break;
-
+            }
             case 'Q': // 退出
                 return 0;
 
             case 'H': // 帮助信息
-
-                std::cout<<"\nCtrl+Alt+Shift+S可以暂停音乐哦\n";
-
+                std::cout<<"\nCtrl+Alt+Shift+S可以暂停音乐哦\n其他的没写(\n";
+                std::cout<<"按任意键以继续..."<<std::endl;
+                _getch();//等待用户输入
+                break;
             default:
                 std::cout << "\n  无效选项，重新选择\n";
                 Sleep(1000);
