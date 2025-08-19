@@ -86,7 +86,7 @@ std::vector<Note> parseSheetMusic(const std::string& sheet) {
     int tempo = 60;
 
     // 查找并设置速度
-    size_t tempoPos = sheet.find("t=");
+    size_t tempoPos = sheet.find("T=");
     // 记录曲谱（不是为什么要单独搞个变量，初版让DeepSeek写的我也没参与[算了还是往下看吧...]）
     std::string notesPart = sheet;
 
