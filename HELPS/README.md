@@ -20,6 +20,9 @@ root/
 │   ├── ori.jpg             软件图标原图
 │   └── result.png          软件图标透明图
 ├── release/                编译结果（使用build.bat的）
+│   ├── installer/                 用于放置安装包相关内容
+│   │   ├── install_win_64.exe     安装包（编译结果） 
+│   │   └── installer_creator.iss  源码（模板）
 │   ├── BeepMusic_release_win_x64.exe
 │   └── BeepMusic_release_win_x86.exe
 ├── src_c/
