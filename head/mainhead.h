@@ -38,4 +38,13 @@ extern std::vector<Note> parseSheetMusic(const std::string& sheet);
 extern void playNotes(const std::vector<Note>& notes);
 
 extern void displayUI(const std::string& sheet, const std::vector<Note>& notes);
+
+
+
+
+extern void m_play(std::vector<Note>& notes);
+extern void m_set_sheet(std::string* sheet);
+extern void m_exit();
+extern void m_help();
+extern void m_default();
 #endif
