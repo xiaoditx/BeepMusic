@@ -1,95 +1,95 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: Ò»Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
+:: Ò»Ð©±äÁ¿£¨¿ÉÒÔ¿ìËÙÒÆÖ²µ½±ðµÄÏîÄ¿£©
 set PROGRAM_NAME=BeepMusic
 set OUTPUT_X64=%PROGRAM_NAME%_release_win_x64.exe
 set OUTPUT_X86=%PROGRAM_NAME%_release_win_x86.exe
 
-:: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼
+:: ´´½¨Êä³öÄ¿Â¼
 if not exist "release\" mkdir release
 
-:: ï¿½ï¿½ï¿½ï¿½Òªï¿½Ä¼ï¿½
+:: ¼ì²é±ØÒªÎÄ¼þ
 if not exist "main.cpp" (
-    echo ï¿½ï¿½ï¿½ï¿½: ï¿½Ò²ï¿½ï¿½ï¿½ main.cpp
+    echo ´íÎó: ÕÒ²»µ½ main.cpp
     goto :cleanUP
 )
 if not exist "resources.rc" (
-    echo ï¿½ï¿½ï¿½ï¿½: ï¿½Ò²ï¿½ï¿½ï¿½ resources.rc
+    echo ´íÎó: ÕÒ²»µ½ resources.rc
     goto :cleanUP
 )
 
-:: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+:: ¼ì²é±àÒëÆ÷
 where g++ >nul 2>&1
 if %errorlevel% neq 0 (
-    echo ï¿½ï¿½ï¿½ï¿½: Î´ï¿½Òµï¿½ g++ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½Ñ°ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ PATH
+    echo ´íÎó: Î´ÕÒµ½ g++ ±àÒëÆ÷£¬ÇëÈ·±£ÒÑ°²×°²¢Ìí¼Óµ½ PATH
     goto :cleanUP
 )
 
-:: ï¿½ï¿½ï¿½ï¿½ 64 Î»ï¿½æ±¾
+:: ±àÒë 64 Î»°æ±¾
 
 :: ===================================
 
-echo ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ 64 Î»ï¿½æ±¾...
+echo ÕýÔÚ±àÒë 64 Î»°æ±¾...
 
-echo ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½Ä¼ï¿½
+echo ÕýÔÚ±àÒë×ÊÔ´ÎÄ¼þ
 windres resources.rc -F pe-x86-64 -o resources_x64.o
-:: ï¿½æ´¢ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ë£¨ï¿½ï¿½ï¿½ï¿½á±»echoË¢ï¿½ï¿½0ï¿½ï¿½
+:: ´æ´¢µ±Ç°´íÎóÂë£¨·ñÔò»á±»echoË¢³É0£©
 set RES64_ERR=%errorlevel%
-echo ï¿½ï¿½ï¿½ë·µï¿½Ø£ï¿½%RES64_ERR%
+echo ±àÒë·µ»Ø£º%RES64_ERR%
 
 if %RES64_ERR% neq 0 (
-    echo ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½Ô´ï¿½Ä¼ï¿½64Î»ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+    echo ´íÎó: ×ÊÔ´ÎÄ¼þ64Î»±àÒëÊ§°Ü
     goto :cleanUP
 )
-echo ï¿½ï¿½Ô´ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½
+echo ×ÊÔ´ÎÄ¼þ±àÒë³É¹¦
 
-echo ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+echo ÕýÔÚ±àÒëÈí¼þÖ÷Ìå
 g++ -m64 -fdiagnostics-color=always src_c/*.cpp main.cpp resources_x64.o -I src_c -I head -o release/%OUTPUT_X64% -mconsole -O2
-:: ï¿½ï¿½ï¿½É´æ´¢
+:: ÒÀ¾É´æ´¢
 set COMP64_ERR=%errorlevel%
-echo ï¿½ï¿½ï¿½ë·µï¿½Ø£ï¿½%COMP64_ERR%
+echo ±àÒë·µ»Ø£º%COMP64_ERR%
 
 if %COMP64_ERR% neq 0 (
-    echo ï¿½ï¿½ï¿½ï¿½: x64ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+    echo ´íÎó: x64³ÌÐò±àÒëÊ§°Ü
     goto :cleanUP
 )
-echo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ release/%OUTPUT_X64%
+echo ±àÒëÍê³É£¬ÒÑÉú³É release/%OUTPUT_X64%
 
-:: ï¿½ï¿½ï¿½ï¿½ 32 Î»ï¿½æ±¾
+:: ±àÒë 32 Î»°æ±¾
 
 :: ===================================
 
-echo ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ 32 Î»ï¿½æ±¾...
-echo ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½Ä¼ï¿½
+echo ÕýÔÚ±àÒë 32 Î»°æ±¾...
+echo ÕýÔÚ±àÒë×ÊÔ´ÎÄ¼þ
 windres resources.rc -F pe-i386 -o resources_x86.o
 set RES32_ERR=%errorlevel%
-echo ï¿½ï¿½ï¿½ë·µï¿½Ø£ï¿½%RES32_ERR%
+echo ±àÒë·µ»Ø£º%RES32_ERR%
 if %RES32_ERR% neq 0 (
-    echo ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½Ô´ï¿½Ä¼ï¿½32Î»ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+    echo ´íÎó: ×ÊÔ´ÎÄ¼þ32Î»±àÒëÊ§°Ü
     goto :cleanUP
 )
-echo ï¿½ï¿½Ô´ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½
+echo ×ÊÔ´ÎÄ¼þ±àÒë³É¹¦
 
-echo ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+echo ÕýÔÚ±àÒëÈí¼þÖ÷Ìå
 i686-w64-mingw32-g++ -m32 -fdiagnostics-color=always main.cpp resources_x86.o src_c/*.cpp -I src_c -I head -o release/%OUTPUT_X86% -mconsole -O2
 set COMP32_ERR=%errorlevel%
-echo ï¿½ï¿½ï¿½ë·µï¿½Ø£ï¿½%COMP32_ERR%
+echo ±àÒë·µ»Ø£º%COMP32_ERR%
 if %COMP32_ERR% neq 0 (
-    echo ï¿½ï¿½ï¿½ï¿½: x86ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+    echo ´íÎó: x86³ÌÐò±àÒëÊ§°Ü
     goto :cleanUP
 )
-echo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ release/%OUTPUT_X86%
+echo ±àÒëÍê³É£¬ÒÑÉú³É release/%OUTPUT_X86%
 
-:: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä¼ï¿½
+:: ÇåÀíÁÙÊ±ÎÄ¼þ
 del resources_x64.o 2>nul
 del resources_x86.o 2>nul
 
 echo.
-echo ï¿½ï¿½ï¿½ï¿½É¹ï¿½!
-echo ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½:
-echo   - %OUTPUT_X64% (64Î»ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½)
-echo   - %OUTPUT_X86% (32Î»ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½)
+echo ±àÒë³É¹¦!
+echo Éú³ÉÎÄ¼þ:
+echo   - %OUTPUT_X64% (64Î»¿ØÖÆÌ¨³ÌÐò)
+echo   - %OUTPUT_X86% (32Î»¿ØÖÆÌ¨³ÌÐò)
 pause
 exit /b 0
 
@@ -97,6 +97,6 @@ exit /b 0
 del resources_x64.o 2>nul
 del resources_x86.o 2>nul
 echo.
-echo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä¼ï¿½
+echo ±àÒë¹ý³ÌÖÐ·¢Éú´íÎó£¬ÒÑÇåÀíÁÙÊ±ÎÄ¼þ
 pause
 exit /b 1
