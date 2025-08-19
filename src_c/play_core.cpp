@@ -1,4 +1,7 @@
 #include"../head/mainhead.h"
+#include<windows.h>
+
+
 
 // 解析单个音符
 Note parseNote(const std::string& noteStr, int tempo) {
@@ -98,10 +101,12 @@ std::vector<Note> parseSheetMusic(const std::string& sheet) {
                     tempoPos + 2,// 头+2，略过“t=”
                     endPos - tempoPos - 2// 尾-头+2，需要选取的长度
                 )
+                // 写麻烦了，设定上t=只能在开头出现的来着
             );
             notesPart = sheet.substr(endPos + 1);// 截取掉开头速度标记的曲谱
         }
     }
+
 
     // 下面开始分割音符喵
 

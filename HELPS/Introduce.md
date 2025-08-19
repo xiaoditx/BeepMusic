@@ -23,7 +23,9 @@ root/
 │   ├── BeepMusic_release_win_x64.exe
 │   └── BeepMusic_release_win_x86.exe
 ├── src_c/
+│   ├── config.cpp          配置文件读写
 │   ├── function.cpp        封装功能函数的定义，简化开发（如彩色输出）
+│   ├── mods.cpp            菜单栏选项对应激活的函数
 │   ├── play_core.cpp       存放核心解析、演奏函数
 │   ├── test.cpp            测试文件（保留做纪念也可随时启用进行测试）
 │   └── UI.cpp              UI显示（其实就是输出看起来像是UI的东西）

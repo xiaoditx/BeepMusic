@@ -9,7 +9,7 @@ int main() {
     //print_hello();// 测试用的来着，不删了吧，注释掉留个纪念
     //初始化与变量准备
     if(!hotkey())Sleep(5000);// 热键注册失败的话会停五秒显示错误信息
-    std::string sheet = "t=120; 1 2 3 4 5 6 7 #1 +1";//初始乐谱
+    std::string sheet = "T=120; 1 2 3 4 5 6 7 #1 +1";//初始乐谱
     std::vector<Note> notes;//初始化notes变量，盛放转化后的乐谱
     //程序主循环
     while (true) {
