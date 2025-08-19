@@ -8,9 +8,7 @@ int main() {
     SetConsoleOutputCP(CP_UTF8);
     //print_hello();// 测试用的来着，不删了吧，注释掉留个纪念
     //初始化与变量准备
-    if(!hotkey()){
-        Sleep(5000);
-    }
+    if(!hotkey())Sleep(5000);// 热键注册失败的话会停五秒显示错误信息
     std::string sheet = "t=120; 1 2 3 4 5 6 7 #1 +1";//初始乐谱
     std::vector<Note> notes;//初始化notes变量，盛放转化后的乐谱
     //程序主循环
@@ -19,39 +17,14 @@ int main() {
         notes = parseSheetMusic(sheet);
         displayUI(sheet, notes);//展示分析结果
         //接受用户按键
-        char choice = _getch();
-        choice = toupper(choice);
+        char choice=toupper(_getch());
         //分析按键
         switch (choice) {
-            case 'P': // 播放
-                std::cout << "\n  播放中... (按任意键停止)\n";
-                playNotes(notes);
-                std::cout<<"按任意键以继续..."<<std::endl;
-                _getch();//等待用户输入
-                break;
-
-            case 'I':{ // 自定义乐谱
-                std::cout << "\n  输入新曲谱: ";
-                std::string user_in;
-                std::getline(std::cin,user_in);
-                std::transform(user_in.begin(),user_in.end(),user_in.begin(),toupper);
-                if(user_in!="RETURN"){
-                    sheet=user_in;
-                }
-                break;
-            }
-            case 'Q': // 退出
-                return 0;
-
-            case 'H': // 帮助信息
-                std::cout<<"\nCtrl+Alt+Shift+S可以暂停音乐哦\n其他的没写(\n";
-                std::cout<<"按任意键以继续..."<<std::endl;
-                _getch();//等待用户输入
-                break;
-            default:
-                std::cout << "\n  无效选项，重新选择\n";
-                Sleep(1000);
-                break;
+            case 'P': handlePlay(notes); break;
+            case 'I': handleInput(sheet); break;
+            case 'Q': return 0;
+            case 'H': handleHelp(); break;
+            default: handleInvalidInput(); break;
         }
     }
     return 0;

@@ -42,9 +42,8 @@ extern void displayUI(const std::string& sheet, const std::vector<Note>& notes);
 
 
 
-extern void m_play(std::vector<Note>& notes);
-extern void m_set_sheet(std::string* sheet);
-extern void m_exit();
-extern void m_help();
-extern void m_default();
+void handlePlay(const std::vector<Note>& notes);
+void handleInput(std::string& sheet);
+void handleHelp();
+void handleInvalidInput();
 #endif
