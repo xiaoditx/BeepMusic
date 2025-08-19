@@ -13,8 +13,8 @@ root/
 ├── HELPS/
 │   ├── Color_Print.md      彩色输出帮助
 │   ├── Hot_Key.md          热键帮助
-│   ├── Introduce.md        项目介绍
-│   └── RC_help.md          resources.rc文件的一些帮助内容
+│   ├── RC_help.md          resources.rc文件的一些帮助内容
+│   └── README.md        项目介绍
 ├── Icons/
 │   ├── favicon.ico         同上级目录的icon.ico，仅名称不同
 │   ├── ori.jpg             软件图标原图
