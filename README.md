@@ -6,6 +6,8 @@
 
 # BeepMusic
 
+V 2.1.2.0 终端版本（其实只有终端版，嘻嘻）
+
 <br>
 <div>
     <img alt="C++" src="https://img.shields.io/badge/C++-17-%2300599C?logo=cplusplus">
