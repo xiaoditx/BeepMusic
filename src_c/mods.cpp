@@ -1,4 +1,7 @@
-#include"../head/mainhead.h"
+#include"../head/mainfunc.h"
+#include<conio.h>
+#include<windows.h>
+#include<algorithm>
 
 void handlePlay(const std::vector<Note>& notes) {
     std::cout << "\n  播放中... (按任意键停止)\n";

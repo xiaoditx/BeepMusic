@@ -1,6 +1,6 @@
-#include"../head/mainhead.h"
+#include<iostream>
 void print_hello(){
-    std::cout<<"ciallo";
+    std::cout<<"Ciallo";
 }
 
 // 保留的测试函数

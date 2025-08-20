@@ -1,5 +1,6 @@
-#include "head/mainhead.h"
 #include "head/function.h"
+#include "head/mainfunc.h"
+#include <conio.h>
 
 // 本文件盛放main函数
 int main() {

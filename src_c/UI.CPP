@@ -1,5 +1,9 @@
-#include"../head/mainhead.h"
-#include"../head/function.h"
+#include "../head/note.h"
+#include<iostream>
+#include<string>
+#include<vector>
+#include<iomanip>
+
 
 // 控制台界面显示
 void displayUI(const std::string& sheet, const std::vector<Note>& notes) {

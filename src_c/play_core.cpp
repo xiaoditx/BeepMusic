@@ -1,6 +1,10 @@
-#include"../head/mainhead.h"
+#include"../head/playcore.h"
+#include"../head/note.h"
 #include<windows.h>
-
+#include<cmath>
+#include<vector>
+#include<sstream>
+#include<iomanip>
 
 
 // 解析单个音符
