@@ -1,3 +1,4 @@
+#pragma once
 #include<string>
 // 音符结构体
 struct Note {
