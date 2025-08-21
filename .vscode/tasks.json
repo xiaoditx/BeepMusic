@@ -14,7 +14,7 @@
                 "-I",
                 "head",
                 "-o",
-                "BeepMusic_alpha.exe",
+                "${fileDirname}\\BeepMusic_alpha.exe",
                 //"${fileDirname}\\${fileBasenameNoExtension}.exe",                
             ],
             "options": {
