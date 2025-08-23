@@ -55,6 +55,15 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "queue": "cpp",
-        "ranges": "cpp"
+        "ranges": "cpp",
+        "cstring": "cpp"
+    },
+    "cSpell.customDictionaries": {
+        "custom-dictionary-workspace": {
+            "name": "custom-dictionary-workspace",
+            "path": "${workspaceFolder:BeepMusic}/.cspell/custom-dictionary-workspace.txt",
+            "addWords": true,
+            "scope": "workspace"
+        }
     }
 }

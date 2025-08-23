@@ -1,0 +1,42 @@
+# Custom Dictionary Words
+xiaoditx
+xiaodi
+vimrc
+Yuzu
+yiyuyan
+beepmusic
+
+.rc files:
+FILESUBTYPE
+FILEOS
+FILEVERSION
+VERSIONINFO
+FILEFLAGSMASK
+PRODUCTVERSION
+FILEFLAGS
+winver.h
+VS_FF_PRIVATEBUILD
+
+
+LPWSTR
+LPTR
+
+iext.fnr
+krnln.fnr
+
+bat:
+errorlevel
+setlocal
+enabledelayedexpansion
+
+softwares:
+windres
+
+G++/GCC arguments:
+mconsole
+fdiagnostics
+
+CPP:
+cout
+cmath
+cstdio

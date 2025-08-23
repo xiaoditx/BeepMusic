@@ -1,0 +1,19 @@
+# Custom Dictionary Words
+Hocevar
+Inno
+autopf
+lzma
+chinesesimp
+desktopicon
+ignoreversion
+ignoreversion��
+Subkey
+uninstallexe
+autodesktop
+skipifsilent
+uninsdeletekey
+uninsdeletevalue
+OpenWithProgids
+nowait
+ᱻechoˢ
+mainhead.h
