@@ -151,4 +151,7 @@ Rest: 0 => Duration: 1000ms
 
 ## 开发者帮助
 
-`HELPS`文件夹下是项目帮助，有些教程文档（我怕我自己忘了怎么写了放进去的），其中[Introduce.md](./HELPS/Introduce.md)会介绍项目的整体结构、各个文件的功能
+`HELPS`文件夹下是项目帮助，有些教程文档（我怕我自己忘了怎么写了放进去的），其中[README.md](./HELPS/README.md)会介绍项目的整体结构、各个文件的功能
+
+当然也可以在[文档汇总](https://xiaoditx.github.io/docs/beepmusic/)上查看，甚至还可以查看多语言版本，只不过这个网站并不是同步更新的
+
