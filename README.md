@@ -155,3 +155,18 @@ Rest: 0 => Duration: 1000ms
 
 当然也可以在[文档汇总](https://xiaoditx.github.io/docs/beepmusic/)上查看，甚至还可以查看多语言版本，只不过这个网站并不是同步更新的
 
+## 贡献者
+
+[![Contributors](https://contrib.rocks/image?repo=xiaoditx/beepmusic)](https://github.com/xiaoditx/beepmusic/graphs/contributors)
+
+## 项目统计
+
+<a href="https://www.star-history.com/#xiaoditx/beepmusic&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=xiaoditx/beepmusic&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=xiaoditx/beepmusic&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=xiaoditx/beepmusic&type=date&legend=top-left" />
+ </picture>
+</a>
+
+![Alt](https://repobeats.axiom.co/api/embed/2139624c8ac3b984dddda4f1e69a8ced9597f8ff.svg "Repobeats analytics image")
